@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     }
                     vat = roomprice * 0.13;
                     service = roomprice * 0.10;
-                    total = room * ((roomprice * days) + vat + service);
+                    total = ((room* roomprice * days) + vat + service);
 
                     hotellocation = spinnerlocation.getSelectedItem().toString();
                     hotelroom = spinnerroom.getSelectedItem().toString();
