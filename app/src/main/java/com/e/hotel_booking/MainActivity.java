@@ -76,6 +76,16 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     double total, vat, service;
 
                     room = Integer.parseInt(etroom.getText().toString());
+                    String ci = tvcidate.getText().toString();
+                    String co = tvcodate.getText().toString();
+
+                        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+                        Date d1 = simpleDateFormat.parse(ci);
+                        Date d2 = simpleDateFormat.parse(co);
+                        long diff = d2.getTime() - d1.getTime();
+                        long diffDays = diff / (24 * 60 * 60 * 1000);
+                        int days = (int) diffDays;
 
                     if (type == "Normal") {
                         roomprice = 2000;
@@ -86,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     }
                     vat = roomprice * 0.13;
                     service = roomprice * 0.10;
-                    total = room * (roomprice + vat + service);
+                    total = room * ((roomprice * days) + vat + service);
 
                     hotellocation = spinnerlocation.getSelectedItem().toString();
                     hotelroom = spinnerroom.getSelectedItem().toString();
@@ -123,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String date = "Year/Month/Day :" + year + "/" + month + "/" + dayOfMonth;
+        String date =  year + "/" + month + "/" + dayOfMonth;
         if (date1 == true) {
             tvcidate.setText(date);
             date1 = false;
