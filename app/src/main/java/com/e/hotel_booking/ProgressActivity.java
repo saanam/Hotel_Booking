@@ -9,17 +9,12 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class ProgressActivity extends AppCompatActivity {
-    private ProgressBar progressBar;
-    private int progressStatus = 0;
-    private TextView progressview;
-    private Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
 
-        this.progressBar = findViewById(R.id.progressbar);
-        this.progressview = findViewById(R.id.progressview);
 
         new Thread(new Runnable() {
             @Override
